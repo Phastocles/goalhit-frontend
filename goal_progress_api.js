@@ -15,10 +15,10 @@
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom, #8ECAE6, #FB8500);
+      background: #023047;
       margin: 0;
       padding: 2rem;
-      color: #023047;
+      color: #8ECAE6;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,7 +32,7 @@
       width: 100%;
       padding: 1rem;
       border-radius: 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid #8ECAE6;
       margin-bottom: 1rem;
       font-size: 1rem;
     }
@@ -41,12 +41,12 @@
       font-size: 1rem;
       border: none;
       border-radius: 1rem;
-      background-color: #219EBC;
+      background-color: #FFB703;
       color: white;
       cursor: pointer;
     }
     button:hover {
-      background-color: #023047;
+      background-color: #FB8500;
     }
     .results {
       background: white;
@@ -70,10 +70,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>Tired of Failing Your Goals?</h1>
-    <p>Turn dreams into daily habits that stick — powered by behavioral science and habit stacking.</p>
+    <h1></h1>
+    <p>Turn your dreams to done by breaking down your habits into small, actionable wins — all powered by behavioral science and habit stacking.</p>
 
-    <input type="text" id="goalInput" placeholder="What’s your goal?" />
+    <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, acheive academically, etc.)?" />
     <button onclick="generateHabit()">Break It Down</button>
 
     <div id="habitResults" class="results" style="display: none;">
