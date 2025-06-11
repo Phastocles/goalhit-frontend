@@ -55,26 +55,59 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       margin-top: 2rem;
       text-align: left;
+      color: #000;
     }
     h1, h2, h3 {
       margin-bottom: 0.5rem;
     }
     ul {
       padding-left: 1.5rem;
+      text-align: left;
     }
     canvas {
       max-width: 100%;
       margin-top: 2rem;
     }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8ECAE6;
+      max-width: 600px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .subtext {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+    .benefits {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 2rem;
+    }
+    .benefits li::before {
+      content: "✔️ ";
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1></h1>
-    <p>Turn dreaming into doing by breaking down your habits into small, actionable wins — all powered by behavioral science* and habit stacking.</p>
+    <h1>Ungettable Goals Transformed into Heroic Habits</h1>
+    <p class="tagline">Turn dreaming into doing by breaking down your habits into small, actionable wins – all powered by behavioural science* and habit stacking.</p>
+    <p class="subtext">
+      If you struggle to stay consistent, our free, science-backed* AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
+    </p>
+    <ul class="benefits">
+      <li>Built on behavioral science* and habit stacking.</li>
+      <li>100% free — no login or email required.</li>
+      <li>No fluff and zero overwhelm. Just clearness and clarity.</li>
+    </ul>
 
-    <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, acheive academically, etc.)?" />
-    <button onclick="generateHabit()">Break It Down</button>
+    <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, ace exams, etc.)?" />
+    <button onclick="generateHabit()">Break It Down For Me</button>
 
     <div id="habitResults" class="results" style="display: none;">
       <h2>🎯 Your Goal: <span id="goalText"></span></h2>
@@ -109,10 +142,137 @@
       <button onclick="trackProgress()">Visualize Progress</button>
       <canvas id="progressChart"></canvas>
     </div>
+
+    <!-- FAQ -->
+    <div class="results">
+      <h2>❓ Why Break Goals Into Habits?</h2>
+      <ul>
+        <li>Big goals don’t fail because you’re lazy. They fail because they feel overwhelming.</li>
+        <li>The brain craves simplicity. Small steps feel doable.</li>
+        <li>Daily habits can keep you going, even when you're tired or distracted.</li>
+        <li>Consistency beats intensity. Success comes bit by bit.</li>
+      </ul>
+      <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank">🔗 See the science: Lally et al. (2010)</a></p>
+
+      <h3>🧠 *Is This Scientifically Backed?</h3>
+      <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
+
+      <ul>
+        <li>
+          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
+            Lally, et al. (2010) – <em>Habits: A Repeat Performance</em> (NIH)
+          </a>
+        </li>
+        <li>
+          <a href="https://psycnet.apa.org/record/1999-15071-005" target="_blank" rel="noopener noreferrer">
+            Gollwitzer (1999) – <em>Implementation Intentions: Strong Effects of Simple Plans</em> (APA)
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1207/s15516709cog1202_4" target="_blank" rel="noopener noreferrer">
+            Sweller (1988) – <em>Cognitive Load During Problem Solving</em> (Cognitive Science)
+          </a>
+        </li>
+        <li>
+          <a href="https://charlesduhigg.com/the-power-of-habit/" target="_blank" rel="noopener noreferrer">
+            Charles Duhigg – <em>The Power of Habit</em>
+          </a>
+        </li>
+        <li>
+          <a href="https://jamesclear.com/atomic-habits" target="_blank" rel="noopener noreferrer">
+            James Clear – <em>Atomic Habits</em>
+          </a>
+        </li>
+      </ul>
+
+      <h3>👤 Who Is This For?</h3>
+      <p>This is for anyone chasing change; be it writers, students, founders, parents – or anyone stuck in a rut. If you've ever said, "I just need a way to start," you're in the right place.</p>
+
+      <h3>🔓 Do I Need to Sign Up?</h3>
+      <p>No. Everything on this site works instantly. Just make a personal plan and you can download it.</p>
+    </div>
   </div>
+
+  <!-- Footer -->
+<style>
+  footer {
+    font-size: 0.9rem;
+    color: #ccc;
+    background-color: #001219;
+    padding: 2rem 1rem;
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 4rem;
+    border-top: 1px solid #264653;
+  }
+
+  footer a {
+    color: #8ecae6;
+    text-decoration: underline;
+  }
+
+  details {
+    margin-top: 1rem;
+    border: none;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #8ecae6;
+    list-style: none;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  summary::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  details[open] summary::before {
+    content: "−";
+  }
+
+  details p {
+    margin-top: 0.5rem;
+    color: #ccc;
+  }
+</style>
+
+<footer>
+  <p>Built by humans who procrastinate, just like you.</p>
+  <p>© 2025 GoalHit-BitByBit — All rights reserved.</p>
+
+  <details>
+    <summary>Affiliate Disclosure</summary>
+    <p>
+      Some links on this site are affiliate links. We may earn a small commission if you make a purchase through them — at no extra cost to you.
+      <a href="#">Learn more</a>.
+    </p>
+  </details>
+
+  <details>
+    <summary>Disclaimer:</summary>
+    <p>
+      The content provided on this website is for general informational and educational purposes only and is not a substitute for professional advice. Always consult with a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
+    </p>
+  </details>
+
+  <p style="margin-top: 1rem;"><strong>Reminder:</strong> Never share personal, sensitive, or identifying information with AI tools.</p>
+</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    // Existing JS unchanged
     async function generateHabit() {
       const goal = document.getElementById("goalInput").value;
       if (!goal.trim()) return;
