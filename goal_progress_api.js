@@ -160,17 +160,17 @@
       <ul>
         <li>
           <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
-            Lally, et al. (2010) – <em>Habits: A Repeat Performance</em> (NIH)
+            Gardner, et al. (2010) – <em>Making health habitual: the psychology of ‘habit-formation’ and general practice</em> (NIH)
           </a>
         </li>
         <li>
-          <a href="https://psycnet.apa.org/record/1999-15071-005" target="_blank" rel="noopener noreferrer">
-            Gollwitzer (1999) – <em>Implementation Intentions: Strong Effects of Simple Plans</em> (APA)
+          <a href="https://psycnet.apa.org/record/1999-05760-004" target="_blank" rel="noopener noreferrer">
+            Gollwitzer (1999) – <em>Implementation intentions: Strong effects of simple plans.</em> (APA)
           </a>
         </li>
         <li>
           <a href="https://doi.org/10.1207/s15516709cog1202_4" target="_blank" rel="noopener noreferrer">
-            Sweller (1988) – <em>Cognitive Load During Problem Solving</em> (Cognitive Science)
+            Sweller (1988) – <em>Cognitive Load During Problem Solving: Effects on Learning</em> (Cognitive Science)
           </a>
         </li>
         <li>
