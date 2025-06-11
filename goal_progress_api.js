@@ -71,7 +71,7 @@
 <body>
   <div class="container">
     <h1></h1>
-    <p>Turn your dreams to done by breaking down your habits into small, actionable wins — all powered by behavioral science and habit stacking.</p>
+    <p>Turn dreaming into doing by breaking down your habits into small, actionable wins — all powered by behavioral science* and habit stacking.</p>
 
     <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, acheive academically, etc.)?" />
     <button onclick="generateHabit()">Break It Down</button>
