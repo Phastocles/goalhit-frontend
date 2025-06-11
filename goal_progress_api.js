@@ -101,9 +101,9 @@
       If you struggle to stay consistent, our free, science-backed* AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
     </p>
     <ul class="benefits">
-      <li>Built on behavioral science* and habit stacking.</li>
-      <li>100% free — no login or email required.</li>
-      <li>No fluff and zero overwhelm. Just clearness and clarity.</li>
+      <li>Built on behavioral science* and habit stacking</li>
+      <li>100% free — no login or email required</li>
+      <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
 
     <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, ace exams, etc.)?" />
@@ -149,7 +149,7 @@
       <ul>
         <li>Big goals don’t fail because you’re lazy. They fail because they feel overwhelming.</li>
         <li>The brain craves simplicity. Small steps feel doable.</li>
-        <li>Daily habits can keep you going, even when you're tired or distracted.</li>
+        <li>Daily habits can keep you going, even when you're tired, distracted or unmotivated.</li>
         <li>Consistency beats intensity. Success comes bit by bit.</li>
       </ul>
       <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank">🔗 See the science: Lally et al. (2010)</a></p>
@@ -186,10 +186,10 @@
       </ul>
 
       <h3>👤 Who Is This For?</h3>
-      <p>This is for anyone chasing change; be it writers, students, founders, parents – or anyone stuck in a rut. If you've ever said, "I just need a way to start," you're in the right place.</p>
+      <p>This is for anyone chasing change — be you financially trapped, an uninspired writer, an overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need a way to start," you're in the right place.</p>
 
       <h3>🔓 Do I Need to Sign Up?</h3>
-      <p>No. Everything on this site works instantly. Just make a personal plan and you can download it.</p>
+      <p>Nope. Everything on this site works instantly. You can copy or screenshot your habit plan right away.</p>
     </div>
   </div>
 
