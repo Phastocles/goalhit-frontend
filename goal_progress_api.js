@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalHit-BitByBit — Build Habits That Stick</title>
   <meta name="description" content="Turn your goals into lasting habits with science-backed strategies. Break down your ambitions, track your progress, and stay motivated with GoalHit-BitByBit." />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
@@ -119,6 +120,8 @@
 
       <h3>🎁 Reward Suggestions:</h3>
       <ul id="rewardList"></ul>
+
+      <button onclick="downloadPlan()">Download Your Plan as PDF</button>
     </div>
 
     <div class="results">
@@ -189,7 +192,7 @@
       <p>Anyone chasing change — whether you feel financially frustrated or creatively cramped. Whether you're an uninspired writer, overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need to see a way to succeed" you're in the right place.</p>
 
       <h3>🔓 Do I Need to Sign Up?</h3>
-      <p>Nope. Everything on this site works instantly. You can copy or screenshot your habit plan right away.</p>
+      <p>Nope. Everything on this site works instantly. Then you can copy download your habit plan as a PDF.</p>
     </div>
   </div>
 
@@ -340,6 +343,46 @@
           }
         }
       });
+    }
+    async function downloadPlan() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+  
+      const goal = document.getElementById("goalText").textContent;
+      const habits = Array.from(document.querySelectorAll("#habitList li")).map(li => li.textContent);
+      const triggers = Array.from(document.querySelectorAll("#triggerList li")).map(li => li.textContent);
+      const rewards = Array.from(document.querySelectorAll("#rewardList li")).map(li => li.textContent);
+
+      let y = 10;
+      doc.setFontSize(14);
+      doc.text("🎯 Goal: " + goal, 10, y);
+      y += 10;
+
+      doc.setFontSize(12);
+      doc.text("📅 Daily Habits:", 10, y);
+      y += 8;
+      habits.forEach(h => {
+        doc.text("- " + h, 12, y);
+        y += 6;
+      });
+
+      y += 6;
+      doc.text("📍 Triggers:", 10, y);
+      y += 8;
+      triggers.forEach(t => {
+        doc.text("- " + t, 12, y);
+        y += 6;
+      });
+
+      y += 6;
+      doc.text("🎁 Rewards:", 10, y);
+      y += 8;
+      rewards.forEach(r => {
+        doc.text("- " + r, 12, y);
+        y += 6;
+      });
+
+      doc.save("goalhit-habit-plan.pdf");
     }
   </script>
 </body>
