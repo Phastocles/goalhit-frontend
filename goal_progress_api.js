@@ -121,7 +121,10 @@
       <h3>🎁 Reward Suggestions:</h3>
       <ul id="rewardList"></ul>
 
-      <button onclick="downloadPlan()">Download Your Plan as PDF</button>
+      <button id="downloadButton" onclick="downloadPlan()" style="display:none; background-color: #FFB703; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 1rem; font-size: 1rem; cursor: pointer; margin-top: 1rem;">
+          📄 Download Plan as PDF
+      </button>
+
     </div>
 
     <div class="results">
