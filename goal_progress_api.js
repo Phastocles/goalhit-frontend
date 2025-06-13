@@ -256,14 +256,13 @@
     <summary>Affiliate Disclosure</summary>
     <p>
       Some links on this site are affiliate links. We may earn a small commission if you make a purchase through them — at no extra cost to you.
-      <a href="#">Learn more</a>.
     </p>
   </details>
 
   <details>
     <summary>Disclaimer:</summary>
     <p>
-      The content provided on this website is for general informational and educational purposes only and is not a substitute for professional advice. Always consult with a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
+      The content provided on this website is for general informational and educational purposes only and is <b>not</b> a substitute for professional advice. Always consult a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
     </p>
   </details>
 
