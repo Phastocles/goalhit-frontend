@@ -291,6 +291,7 @@
       document.getElementById("triggerList").innerHTML = data.triggers.map(t => `<li>${t}</li>`).join('');
       document.getElementById("rewardList").innerHTML = data.rewards.map(r => `<li>${r}</li>`).join('');
       document.getElementById("habitResults").style.display = "block";
+      document.getElementById("downloadButton").style.display = "inline-block";
     }
 
     async function trackCost() {
