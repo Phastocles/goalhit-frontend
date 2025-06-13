@@ -98,10 +98,10 @@
     <h1>Ungettable Goals Transformed into Heroic Habits</h1>
     <p class="tagline">Turn dreaming into doing by breaking down your habits into small, actionable wins – all powered by behavioural science* and habit stacking.</p>
     <p class="subtext">
-      If you struggle to stay consistent, our free, science-backed* AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
+      If you struggle to stay consistent, our free, science-backed AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
     </p>
     <ul class="benefits">
-      <li>Built on behavioral science* and habit stacking</li>
+      <li>Built on behavioral science and habit stacking</li>
       <li>100% free — no login or email required</li>
       <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
@@ -154,23 +154,23 @@
       </ul>
       <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank">🔗 See the science: Lally et al. (2010)</a></p>
 
-      <h3>🧠 *Is This Scientifically Backed?</h3>
+      <h3>🧠 Is This Scientifically Backed?</h3>
       <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
 
       <ul>
         <li>
           <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
-            Gardner, et al. (2010) – <em>Making health habitual: the psychology of ‘habit-formation’ and general practice</em> (NIH)
+            Gardner, et al. (2012) – <em>Making health habitual</em> (NIH)
           </a>
         </li>
         <li>
           <a href="https://psycnet.apa.org/record/1999-05760-004" target="_blank" rel="noopener noreferrer">
-            Gollwitzer (1999) – <em>Implementation intentions: Strong effects of simple plans.</em> (APA)
+            Gollwitzer (1999) – <em>Implementation Intentions</em> (APA)
           </a>
         </li>
         <li>
           <a href="https://doi.org/10.1207/s15516709cog1202_4" target="_blank" rel="noopener noreferrer">
-            Sweller (1988) – <em>Cognitive Load During Problem Solving: Effects on Learning</em> (Cognitive Science)
+            Sweller (1988) – <em>Cognitive Load During Problem Solving</em> (Cognitive Science)
           </a>
         </li>
         <li>
@@ -186,7 +186,7 @@
       </ul>
 
       <h3>👤 Who Is This For?</h3>
-      <p>This is for anyone chasing change — be you financially trapped, an uninspired writer, an overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need a way to start," you're in the right place.</p>
+      <p>Anyone chasing change — whether you feel financially frustrated or creatively cramped. Whether you're an uninspired writer, overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need to see a way to succeed" you're in the right place.</p>
 
       <h3>🔓 Do I Need to Sign Up?</h3>
       <p>Nope. Everything on this site works instantly. You can copy or screenshot your habit plan right away.</p>
