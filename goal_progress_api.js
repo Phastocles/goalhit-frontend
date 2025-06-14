@@ -17,7 +17,7 @@
   <title>GoalHit-BitByBit — Build Habits That Stick</title>
   <meta name="description" content="Turn your goals into lasting habits with science-backed strategies. Break down your ambitions, track your progress, and stay motivated with GoalHit-BitByBit." />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9BQQHYJ2B"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -118,7 +118,7 @@
       <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
 
-    <input type="text" id="goalInput" placeholder="What's your goal (write a novel, mental offload, ace exams, etc.)?" />
+    <input type="text" id="goalInput" placeholder="What's do you want to acheive (write a novel, mental offload, ace exams, etc.)?" />
     <button onclick="generateHabit()">Break It Down For Me</button>
 
     <div id="habitResults" class="results" style="display: none;">
@@ -169,7 +169,6 @@
         <li>Daily habits can keep you going, even when you're tired, distracted or unmotivated.</li>
         <li>Consistency beats intensity. Success comes bit by bit.</li>
       </ul>
-      <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank">🔗 See the science: Lally et al. (2010)</a></p>
 
       <h3>🧠 Is This Scientifically Backed?</h3>
       <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
@@ -203,10 +202,10 @@
       </ul>
 
       <h3>👤 Who Is This For?</h3>
-      <p>Anyone chasing change — whether you feel financially frustrated or creatively cramped. Whether you're an uninspired writer, overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need to see a way to succeed" you're in the right place.</p>
+      <p>Anyone chasing change — whether you're financially frustrated or creatively cramped. Whether you're an uninspired writer, overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need to see a way to succeed" you're in the right place.</p>
 
       <h3>🔓 Do I Need to Sign Up?</h3>
-      <p>Nope. Everything on this site works instantly. Then you can copy download your habit plan as a PDF.</p>
+      <p>Nope. Everything on this site works instantly. Then you can download your plan as a PDF.</p>
     </div>
   </div>
 
@@ -272,7 +271,7 @@
   <details>
     <summary>Affiliate Disclosure</summary>
     <p>
-      Some links on this site are affiliate links. We may earn a small commission if you make a purchase through them — at no extra cost to you.
+      Some links on this site are affiliates. We may earn a small commission if you make a purchase through them — at no additional cost to you.
     </p>
   </details>
 
