@@ -61,7 +61,7 @@
       background-color: #FB8500;
     }
     .results {
-      background: white;
+      background: #8ECAE6;
       padding: 2rem;
       border-radius: 1.5rem;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -108,7 +108,7 @@
 <body>
   <div class="container">
     <h1>Ungettable Goals Transformed into Heroic Habits</h1>
-    <p class="tagline">Turn dreaming into doing by breaking down your habits into small, actionable wins – all powered by behavioural science* and habit stacking.</p>
+    <p class="tagline">Turn dreaming into doing by breaking down your habits into small, actionable wins.</p>
     <p class="subtext">
       If you struggle to stay consistent, our free, science-backed AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
     </p>
@@ -176,7 +176,7 @@
       <ul>
         <li>
           <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
-            Gardner, et al. (2012) – <em>Making health habitual</em> (NIH)
+            Gardner, et al. (2012) – <em>Making Health Habitual</em> (NIH)
           </a>
         </li>
         <li>
