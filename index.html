@@ -1,7 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoalHit-BitByBit — Build Habits That Stick</title>
+  <meta name="description" content="Turn your goals into lasting habits with science-backed strategies. Break down your ambitions, track your progress, and stay motivated with GoalHit-BitByBit." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="/favicon.png" type="image/x-icon" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GoalHit-BitByBit — Build Habits That Stick" />
+  <meta property="og:description" content="Turn your goals into daily habits using science-backed tools." />
+  <meta property="og:image" content="https://goalhitbitbybit/preview.png" />
+  <meta property="og:url" content="https://goalhit-bitbybit.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GoalHit-BitByBit — Build Habits That Stick" />
+  <meta name="twitter:description" content="Science-based habit building made simple and actionable." />
+  <meta name="twitter:image" content="https://goalhit-bitbybit/preview.png" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GoalHit-BitByBit",
+    "url": "https://goalhit-bitbybit.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://goalhit-bitbybit.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9BQQHYJ2B"></script>
   <script>
@@ -40,6 +76,49 @@
       width: 100%;
       text-align: center;
     }
+
+    h1, h2, h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      text-align: left;
+    }
+
+    a {
+      color: #FFB703;
+      text-decoration: underline;
+    }
+
+    .section {
+      background: white;
+      color: #000;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+    }
+    .toggle {
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .toggle-content {
+      display: none;
+      padding-top: 0.5rem;
+    }
+    @media screen and (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .container {
+        padding: 0;
+      }
+    }
+
     input, select {
       width: 100%;
       padding: 1rem;
@@ -85,13 +164,7 @@
       text-align: left;
       color: #000;
     }
-    h1, h2, h3 {
-      margin-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-      text-align: left;
-    }
+    
     canvas {
       max-width: 100%;
       margin-top: 2rem;
@@ -123,21 +196,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>Ungettable Goals Transformed into Heroic Habits</h1>
-    <p class="tagline">Turn dreaming into doing by breaking down your habits into small, actionable wins.</p>
+    <h1>🎯 Goalhit-Bitbybit</h1>
+    <p><strong>Tired of Failing Your Goals?</strong> Turn Dreams Into Daily Habits That Stick.</p>
     <p class="subtext">
-      If you struggle to stay consistent, our free, science-backed AI tool breaks your goals down into a personalized daily habit plan that you can start today. Whatever it may be.
+      If you struggle to stay consistent, our free, science-backed AI tool breaks your goals down into a personalized daily habit plan that you can start today.
     </p>
+    <p>Whether you want to lose weight, write a book, get your finances in order, or just stop doomscrolling, Goalhit-Bitbybit transforms your ambitions into 'snack-sized', actionable steps.</p>
     <ul class="benefits">
       <li>Built on behavioral science and habit stacking</li>
       <li>100% free — no login or email required</li>
       <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
 
-    <h1 style="color: #FFB703; font-size: 2rem; margin-top: 0;">GoalHit-BitByBit</h1>
-    <p style="color: #8ECAE6;">Turn big goals into small daily wins — instantly.</p>
-
-    <input type="text" id="goalInput" placeholder="What's do you want to acheive (write a novel, mental offload, ace exams, etc.)?" />
+    <input type="text" id="goalInput" placeholder="What do you want to achieve (write a novel, mental offload, ace exams, etc.)?" />
     <button onclick="generateHabit()">Break It Down For Me</button>
 
     <div id="habitResults" class="results" style="display: none;">
@@ -221,10 +292,20 @@
       </ul>
 
       <h3>👤 Who Is This For?</h3>
-      <p>Anyone chasing change — whether you're financially frustrated or creatively cramped. Whether you're an uninspired writer, overwhelmed student, exhausted parent – or just anyone stuck in a rut. If you've ever said, "I just need to see a way to succeed" you're in the right place.</p>
+      <p>Anyone chasing change: the financially frustrated, uninspired employee or the creatively cramped. Whether you're a writer, student, parent, goal-seeker – or just anyone stuck in a rut. If you say "I need to see a way to succeed," you're in the right place.</p>
 
       <h3>🔓 Do I Need to Sign Up?</h3>
       <p>Nope. Everything on this site works instantly. Then you can download your plan as a PDF.</p>
+  
+  <!-- Input field and button -->
+    <div class="section" id="habit-generator">
+      <h2>Create Your Habit Plan</h2>
+      <label for="habit-input">What habit do you want to build?</label><br>
+      <input type="text" id="habit-input" placeholder="What's your goal (write a novel, mental offload, ace exams, etc.)?" />
+      <br><br>
+      <button onclick="generatePlan()">🎯 Generate My Habit Plan</button>
+      <button onclick="downloadPDF()">📄 Download PDF</button>
+    </div>
 
     </div>
   </div>
@@ -249,10 +330,7 @@
 
   details {
     margin-top: 1rem;
-    border: 1px solid #264653;
-    border-radius: 1rem;
-    background-color: #012A3E;
-    padding: 1rem
+    border: none;
     text-align: left;
     max-width: 600px;
     margin-left: auto;
@@ -291,15 +369,13 @@
   <p>Built by humans who procrastinate, just like you.</p>
   <p>© 2025 GoalHit-BitByBit — All rights reserved.</p>
 
-  <details>
-    <summary>Affiliate Disclosure</summary>
+  
+  <summary>Affiliate Disclosure</summary>
     <p>
       Some links on this site are affiliates. We may earn a small commission if you make a purchase through them — at no additional cost to you.
     </p>
-  </details>
-
-  <details>
-    <summary>Disclaimer:</summary>
+  
+  <summary>Disclaimer:</summary>
     <p>
       The content provided on this website is for general informational and educational purposes only and is <b>not</b> a substitute for professional advice. Always consult a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
     </p>
