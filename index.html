@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,22 +43,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-S9BQQHYJ2B');
   </script>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoalHit-BitByBit — Build Habits That Stick</title>
-  <meta name="description" content="Turn your goals into lasting habits with science-backed strategies. Break down your ambitions, track your progress, and stay motivated with GoalHit-BitByBit." />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9BQQHYJ2B"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S9BQQHYJ2B');
-  </script>
+
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -74,7 +60,7 @@
     .container {
       max-width: 600px;
       width: 100%;
-      text-align: center;
+      text-align: left;
     }
 
     h1, h2, h3 {
@@ -155,6 +141,7 @@
     button:hover {
       background-color: #FB8500;
     }
+    
     .results {
       background: #8ECAE6;
       padding: 2rem;
@@ -169,6 +156,50 @@
       max-width: 100%;
       margin-top: 2rem;
     }
+
+
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #f9fafb;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .faq-item[open] {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .faq-item summary::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.1rem;
+      line-height: 1.2;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::before {
+      content: "−";
+      transform: rotate(180deg);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none; /* Remove default triangle */
+    }
+
+
     footer {
       margin-top: 3rem;
       text-align: center;
@@ -192,24 +223,26 @@
     .benefits li::before {
       content: "✔️ ";
     }
+
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>🎯 Goalhit-Bitbybit</h1>
-    <p><strong>Tired of Failing Your Goals?</strong> Turn Dreams Into Daily Habits That Stick.</p>
+    <p><strong>Tired of Not Achieving Your Goals?</strong> Turn Dreams Into Daily Habits That Stick.</p>
     <p class="subtext">
-      If you struggle to stay consistent, our free, science-backed AI tool breaks your goals down into a personalized daily habit plan that you can start today.
+      If you struggle to stay consistent, our free, science-backed AI tool breaks down your goal into a personalized daily habit plan.
     </p>
-    <p>Whether you want to lose weight, write a book, get your finances in order, or just stop doomscrolling, Goalhit-Bitbybit transforms your ambitions into 'snack-sized', actionable steps.</p>
+    <p>Whether you want to lose weight, write a book, get your finances in order, or just stop doomscrolling, Goalhit-Bitbybit transforms your ambitions into small. actionable wins</p>
     <ul class="benefits">
       <li>Built on behavioral science and habit stacking</li>
       <li>100% free — no login or email required</li>
       <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
 
-    <input type="text" id="goalInput" placeholder="What do you want to achieve (write a novel, mental offload, ace exams, etc.)?" />
-    <button onclick="generateHabit()">Break It Down For Me</button>
+    <input type="text" id="goalInput" placeholder="What do you want to achieve?" />
+    <button onclick="generateHabit()">Visualise It For Me</button>
 
     <div id="habitResults" class="results" style="display: none;">
       <h2>🎯 Your Goal: <span id="goalText"></span></h2>
@@ -226,88 +259,84 @@
           📄 Download Plan as PDF
       </button>
 
+      <button id="resetButton" onclick="resetTool()" style="margin-left: 1rem; background-color: #999;">
+          🔄 Reset
+      </button>
+
+
     </div>
 
-    <div class="results">
-      <h2>💡 Habit Cost Tracker</h2>
-      <input type="text" id="habitCostName" placeholder="Describe your habit" />
-      <input type="range" id="habitTime" min="5" max="120" />
-      <input type="range" id="habitDifficulty" min="0" max="100" />
-      <button onclick="trackCost()">Estimate Cost</button>
-      <div id="habitCostOutput" style="display:none">
-        <h3 id="costSummary"></h3>
-        <p><strong>Time to form:</strong> <span id="formTime"></span></p>
-        <p><strong>Willpower Load:</strong> <span id="willpower"></span></p>
-        <p><strong>Dropout Risk:</strong> <span id="dropout"></span></p>
+    <div id="visualBreakdown" style="display:none;">
+      <!-- Habit Cost Tracker -->
+      <div class="results">
+        <h2>💡 Habit Cost Tracker</h2>
+        ...
       </div>
-    </div>
 
-    <div class="results">
-      <h2>📈 Progress Tracker</h2>
-      <input type="text" id="progressGoal" placeholder="e.g. Write a book" />
-      <input type="number" id="progressDays" placeholder="Days to track (e.g. 30)" />
-      <button onclick="trackProgress()">Visualize Progress</button>
-      <canvas id="progressChart"></canvas>
+      <!-- Progress Tracker -->
+      <div class="results">
+        <h2>📈 Progress Tracker</h2>
+        ...
+      </div>
     </div>
 
     <!-- FAQ -->
     <div class="results">
-      <h2>❓ Why Break Goals Into Habits?</h2>
-      <ul>
-        <li>Big goals don’t fail because you’re lazy. They fail because they feel overwhelming.</li>
-        <li>The brain craves simplicity. Small steps feel doable.</li>
-        <li>Daily habits can keep you going, even when you're tired, distracted or unmotivated.</li>
-        <li>Consistency beats intensity. Success comes bit by bit.</li>
-      </ul>
+      <h2>💡 Frequently Asked Questions</h2>
 
-      <h3>🧠 Is This Scientifically Backed?</h3>
-      <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
+      <details class="faq-item">
+        <summary>❓ Why Break Goals Into Habits?</summary>
+        <ul>
+          <li>Big goals don’t fail because you’re lazy. They fail because they feel overwhelming.</li>
+          <li>The brain craves simplicity. Small steps feel doable.</li>
+          <li>Daily habits can keep you going, even when you're tired, distracted or unmotivated.</li>
+          <li>Consistency beats intensity. Success comes bit by bit.</li>
+        </ul>
+      </details>
 
-      <ul>
-        <li>
-          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
-            Gardner, et al. (2012) – <em>Making Health Habitual</em> (NIH)
-          </a>
-        </li>
-        <li>
-          <a href="https://psycnet.apa.org/record/1999-05760-004" target="_blank" rel="noopener noreferrer">
-            Gollwitzer (1999) – <em>Implementation Intentions</em> (APA)
-          </a>
-        </li>
-        <li>
-          <a href="https://doi.org/10.1207/s15516709cog1202_4" target="_blank" rel="noopener noreferrer">
-            Sweller (1988) – <em>Cognitive Load During Problem Solving</em> (Cognitive Science)
-          </a>
-        </li>
-        <li>
-          <a href="https://charlesduhigg.com/the-power-of-habit/" target="_blank" rel="noopener noreferrer">
-            Charles Duhigg – <em>The Power of Habit</em>
-          </a>
-        </li>
-        <li>
-          <a href="https://jamesclear.com/atomic-habits" target="_blank" rel="noopener noreferrer">
-            James Clear – <em>Atomic Habits</em>
-          </a>
-        </li>
-      </ul>
+      <details class="faq-item">
+        <summary>🧠 Is This Scientifically Backed?</summary>
+        <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
+        <ul>
+          <li>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/" target="_blank" rel="noopener noreferrer">
+              Gardner, et al. (2012) – <em>Making Health Habitual</em> (NIH)
+            </a>
+          </li>
+          <li>
+            <a href="https://psycnet.apa.org/record/1999-05760-004" target="_blank" rel="noopener noreferrer">
+              Gollwitzer (1999) – <em>Implementation Intentions</em> (APA)
+            </a>
+          </li>
+          <li>
+            <a href="https://doi.org/10.1207/s15516709cog1202_4" target="_blank" rel="noopener noreferrer">
+              Sweller (1988) – <em>Cognitive Load During Problem Solving</em> (Cognitive Science)
+            </a>
+          </li>
+          <li>
+            <a href="https://charlesduhigg.com/the-power-of-habit/" target="_blank" rel="noopener noreferrer">
+              Charles Duhigg – <em>The Power of Habit</em>
+            </a>
+          </li>
+          <li>
+            <a href="https://jamesclear.com/atomic-habits" target="_blank" rel="noopener noreferrer">
+              James Clear – <em>Atomic Habits</em>
+            </a>
+          </li>
+        </ul>
+      </details>
 
-      <h3>👤 Who Is This For?</h3>
-      <p>Anyone chasing change: the financially frustrated, uninspired employee or the creatively cramped. Whether you're a writer, student, parent, goal-seeker – or just anyone stuck in a rut. If you say "I need to see a way to succeed," you're in the right place.</p>
+      <details class="faq-item">
+        <summary>👤 Who Is This For?</summary>
+        <p>Anyone chasing change: the financially frustrated, uninspired employee or the creatively cramped. Whether you're a writer, student, parent, goal-seeker – or just anyone stuck in a rut. If you say "I need to see a way to succeed," you're in the right place.</p>
+      </details>
 
-      <h3>🔓 Do I Need to Sign Up?</h3>
-      <p>Nope. Everything on this site works instantly. Then you can download your plan as a PDF.</p>
-  
-  <!-- Input field and button -->
-    <div class="section" id="habit-generator">
-      <h2>Create Your Habit Plan</h2>
-      <label for="habit-input">What habit do you want to build?</label><br>
-      <input type="text" id="habit-input" placeholder="What's your goal (write a novel, mental offload, ace exams, etc.)?" />
-      <br><br>
-      <button onclick="generatePlan()">🎯 Generate My Habit Plan</button>
-      <button onclick="downloadPDF()">📄 Download PDF</button>
+      <details class="faq-item">
+        <summary>🔓 Do I Need to Sign Up?</summary>
+        <p>Nope. Everything on this site works instantly. Then you can download your plan as a PDF.</p>
+      </details>
     </div>
 
-    </div>
   </div>
 
   <!-- Footer -->
@@ -369,16 +398,18 @@
   <p>Built by humans who procrastinate, just like you.</p>
   <p>© 2025 GoalHit-BitByBit — All rights reserved.</p>
 
-  
-  <summary>Affiliate Disclosure</summary>
-    <p>
-      Some links on this site are affiliates. We may earn a small commission if you make a purchase through them — at no additional cost to you.
-    </p>
-  
-  <summary>Disclaimer:</summary>
-    <p>
-      The content provided on this website is for general informational and educational purposes only and is <b>not</b> a substitute for professional advice. Always consult a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
-    </p>
+  <details>
+    <summary>Affiliate Disclosure</summary>
+      <p>
+        Some links on this site are affiliates. We may earn a small commission if you make a purchase through them — at no additional cost to you.
+      </p>
+  </details>
+
+  <details>
+    <summary>Disclaimer:</summary>
+      <p>
+        The content provided on this website is for general informational and educational purposes only and is <b>not</b> a substitute for professional advice. Always consult a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
+      </p>
   </details>
 
   <p style="margin-top: 1rem;"><strong>Reminder:</strong> Never share personal, sensitive, or identifying information with AI tools.</p>
@@ -404,6 +435,7 @@
       document.getElementById("rewardList").innerHTML = data.rewards.map(r => `<li>${r}</li>`).join('');
       document.getElementById("habitResults").style.display = "block";
       document.getElementById("downloadButton").style.display = "inline-block";
+      document.getElementById("visualBreakdown").style.display = "block";
     }
 
     async function trackCost() {
@@ -497,6 +529,35 @@
 
       doc.save("goalhit-habit-plan.pdf");
     }
+
+    async function resetTool() {
+      document.getElementById("goalInput").value = '';
+      document.getElementById("habitResults").style.display = "none";
+      document.getElementById("downloadButton").style.display = "none";
+      document.getElementById("visualBreakdown").style.display = "none";
+
+      // Optional: clear other fields if needed
+      document.getElementById("habitCostName").value = '';
+      document.getElementById("progressGoal").value = '';
+      document.getElementById("progressDays").value = '';
+      document.getElementById("habitCostOutput").style.display = "none";
+      const chartCanvas = document.getElementById("progressChart");
+      if (chartCanvas) {
+        chartCanvas.getContext('2d').clearRect(0, 0, chartCanvas.width, chartCanvas.height);
+      }
+    }
+  </script>
+
+  <!-- FAQ transition animations -->
+  <script>
+    document.querySelectorAll(".faq-item").forEach((el) => {
+      el.addEventListener("toggle", () => {
+        if (el.open) {
+          el.classList.add("opening");
+          setTimeout(() => el.classList.remove("opening"), 300);
+        }
+      });
+    });
   </script>
 </body>
 </html>
