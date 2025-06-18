@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="GoalHit-BitByBit — Build Habits That Stick" />
   <meta property="og:description" content="Turn your goals into daily habits using science-backed tools." />
-  <meta property="og:image" content="https://goalhit-bitbybit/preview.png" />
+  <meta property="og:image" content="https://goalhitbitbybit/preview.png" />
   <meta property="og:url" content="https://goalhit-bitbybit.com/" />
   <meta property="og:type" content="website" />
 
@@ -61,6 +62,12 @@
       max-width: 600px;
       width: 100%;
       text-align: left;
+    }
+
+    .inputfieldcontainer {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
     }
 
     h1, h2, h3 {
@@ -157,49 +164,6 @@
       margin-top: 2rem;
     }
 
-
-    .faq-item {
-      border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #f9fafb;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .faq-item[open] {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1.1rem;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .faq-item summary::before {
-      content: "+";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 1.1rem;
-      line-height: 1.2;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-item[open] summary::before {
-      content: "−";
-      transform: rotate(180deg);
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none; /* Remove default triangle */
-    }
-
-
     footer {
       margin-top: 3rem;
       text-align: center;
@@ -230,19 +194,21 @@
 <body>
   <div class="container">
     <h1>🎯 Goalhit-Bitbybit</h1>
-    <p><strong>Not Achieving Your Goals?</strong> Turn Your Dreams Into Daily Habits That Stick.</p>
+    <p><strong>Tired of Not Achieving Your Goals?</strong> Turn Dreams Into Daily Habits That Stick.</p>
     <p class="subtext">
-      If you struggle to stay consistent, our free, science-backed AI tools break down your goals into a personalized daily habit plan.
+      If you struggle to stay consistent, our free, science-backed AI tool breaks down your goal into a personalized daily habit plan.
     </p>
-    <p>Whether you want to lose weight, write a book, get your finances in order, or just stop doomscrolling, Goalhit-Bitbybit transforms your ambitions into small, actionable wins.</p>
+    <p>Whether you want to lose weight, write a book, get your finances in order, or just stop doomscrolling, Goalhit-Bitbybit transforms your ambitions into small. actionable wins</p>
     <ul class="benefits">
       <li>Built on behavioral science and habit stacking</li>
       <li>100% free — no login or email required</li>
-      <li>No fluff or overwhelm. Just clearness and clarity</li>
+      <li>No fluff and zero overwhelm. Just clearness and clarity</li>
     </ul>
 
-    <input type="text" id="goalInput" placeholder="What do you want to achieve?" />
-    <button onclick="generateHabit()">Visualise It For Me</button>
+    <div class="inputfieldcontainer">
+      <input type="text" id="goalInput" placeholder="What do you want to achieve?" />
+      <button onclick="generateHabit()">Visualise It For Me</button>
+    </div>
 
     <div id="habitResults" class="results" style="display: none;">
       <h2>🎯 Your Goal: <span id="goalText"></span></h2>
@@ -262,7 +228,6 @@
       <button id="resetButton" onclick="resetTool()" style="margin-left: 1rem; background-color: #999;">
           🔄 Reset
       </button>
-
 
     </div>
 
@@ -284,7 +249,7 @@
     <div class="results">
       <h2>💡 Frequently Asked Questions</h2>
 
-      <details class="faq-item">
+      <details>
         <summary>❓ Why Break Goals Into Habits?</summary>
         <ul>
           <li>Big goals don’t fail because you’re lazy. They fail because they feel overwhelming.</li>
@@ -294,7 +259,7 @@
         </ul>
       </details>
 
-      <details class="faq-item">
+      <details>
         <summary>🧠 Is This Scientifically Backed?</summary>
         <p>Yes. We draw from behavioral psychology, habit stacking, and simplicity science to build recommendations that work.</p>
         <ul>
@@ -326,12 +291,12 @@
         </ul>
       </details>
 
-      <details class="faq-item">
+      <details>
         <summary>👤 Who Is This For?</summary>
         <p>Anyone chasing change: the financially frustrated, uninspired employee or the creatively cramped. Whether you're a writer, student, parent, goal-seeker – or just anyone stuck in a rut. If you say "I need to see a way to succeed," you're in the right place.</p>
       </details>
 
-      <details class="faq-item">
+      <details>
         <summary>🔓 Do I Need to Sign Up?</summary>
         <p>Nope. Everything on this site works instantly. Then you can download your plan as a PDF.</p>
       </details>
@@ -375,6 +340,19 @@
     padding-left: 1.5rem;
   }
 
+  summary::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  details[open] summary::before {
+    content: "−";
+  }
+
   details p {
     margin-top: 0.5rem;
     color: #ccc;
@@ -386,14 +364,14 @@
   <p>© 2025 GoalHit-BitByBit — All rights reserved.</p>
 
   <details>
-    <summary>Affiliate Disclosure</summary>
+    <p><strong>Affiliate Disclosure</strong></p>
       <p>
         Some links on this site are affiliates. We may earn a small commission if you make a purchase through them — at no additional cost to you.
       </p>
   </details>
 
   <details>
-    <summary>Disclaimer:</summary>
+    <p><strong>Disclaimer:</strong></p>
       <p>
         The content provided on this website is for general informational and educational purposes only and is <b>not</b> a substitute for professional advice. Always consult a qualified expert before making medical, psychological, legal, or financial decisions based on this content. Use of this site is at your own risk.
       </p>
