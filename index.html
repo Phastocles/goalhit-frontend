@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="GoalHit-BitByBit — Build Habits That Stick" />
   <meta property="og:description" content="Turn your goals into daily habits using science-backed tools." />
-  <meta property="og:image" content="https://goalhitbitbybit/preview.png" />
+  <meta property="og:image" content="https://goalhit-bitbybit.com/preview.png" />
   <meta property="og:url" content="https://goalhit-bitbybit.com/" />
   <meta property="og:type" content="website" />
 
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GoalHit-BitByBit — Build Habits That Stick" />
   <meta name="twitter:description" content="Science-based habit building made simple and actionable." />
-  <meta name="twitter:image" content="https://goalhit-bitbybit/preview.png" />
+  <meta name="twitter:image" content="https://goalhit-bitbybit.com/preview.png" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -150,7 +150,7 @@
     
     .results {
       background: #8ECAE6;
-      padding: 2rem;
+      padding: 1rem;
       border-radius: 1.5rem;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       margin-top: 2rem;
@@ -205,7 +205,8 @@
     </ul>
 
     <div class="inputfieldcontainer">
-      <input type="text" id="goalInput" placeholder="What do you want to achieve?" />
+      <input type="text" id="goalInput" placeholder="What do you want to achieve?" aria-label="Goal input" />
+      <label for="goalInput" style="display: none;">Enter Your Goal</label>
       <button onclick="generateHabit()">Visualise It For Me</button>
     </div>
 
@@ -229,19 +230,47 @@
       </button>
     </div>
 
+
     <div id="visualBreakdown" style="display:none;">
       <!-- Habit Cost Tracker -->
-      <div class="results">
+      <div class="results" id="habitCostSection" style="display: none;">
         <h2>💡 Habit Cost Tracker</h2>
-        ...
+        <div id="habitCostOutput">
+          <div id="costBreakdownContainer">
+            <h3>Cost Breakdown Over Time</h3>
+            <table id="costBreakdownTable">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Cost</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated by JS -->
+
+              </tbody>
+            </table>
+          </div>
+          <div id="totalCostContainer">
+            <h3>Total Estimated Cost</h3>
+            <p><strong>Total Cost:</strong> <span id="totalCost"></span></p>
+          </div>
+        </div>
       </div>
+
 
       <!-- Progress Tracker -->
       <div class="results">
         <h2>📈 Progress Tracker</h2>
-        ...
+        <canvas id="progressChart" width="400" height="200"></canvas>
+        <p><strong>Summary:</strong> <span id="costSummaryProgress"></span></p>
+        <p><strong>Time to Form:</strong> <span id="formTimeProgress"></span></p>
+        <p><strong>Willpower Load:</strong> <span id="willpowerProgress"></span></p>
+        <p><strong>Dropout Risk:</strong> <span id="dropoutProgress"></span></p>
       </div>
     </div>
+
 
     <!-- FAQ -->
     <div>
@@ -366,138 +395,161 @@
   <p style="margin-top: 1rem;"><strong>Reminder:</strong> Never share personal, sensitive, or identifying information with AI tools.</p>
 </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Existing JS unchanged
-    async function generateHabit() {
-      const goal = document.getElementById("goalInput").value;
-      if (!goal.trim()) return;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  async function generateHabit() {
+    if (!goal) return;
 
-      const res = await fetch("/api/generate-habit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal })
-      });
-      const data = await res.json();
+    const res = await fetch("/api/generate-habit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ goal })
+    });
+    const data = await res.json();
 
-      document.getElementById("goalText").textContent = data.goal;
-      document.getElementById("habitList").innerHTML = data.habits.map(h => `<li>${h}</li>`).join('');
-      document.getElementById("triggerList").innerHTML = data.triggers.map(t => `<li>${t}</li>`).join('');
-      document.getElementById("rewardList").innerHTML = data.rewards.map(r => `<li>${r}</li>`).join('');
-      document.getElementById("habitResults").style.display = "block";
-      document.getElementById("downloadButton").style.display = "inline-block";
-      document.getElementById("visualBreakdown").style.display = "block";
+    document.getElementById("goalText").textContent = data.goal;
+    document.getElementById("habitList").innerHTML = data.habits.map(h => `<li>${h}</li>`).join('');
+    document.getElementById("triggerList").innerHTML = data.triggers.map(t => `<li>${t}</li>`).join('');
+    document.getElementById("rewardList").innerHTML = data.rewards.map(r => `<li>${r}</li>`).join('');
+    document.getElementById("habitResults").style.display = "block";
+    document.getElementById("downloadButton").style.display = "inline-block";
+    document.getElementById("visualBreakdown").style.display = "block";
+
+    // Auto-track habit cost based on first habit
+    if (data.habits.length) {
+      await trackCostAuto(data.habits[0]);
+      await trackProgressAuto(data.goal);
     }
+  }
 
-    async function trackCost() {
-      const habit = document.getElementById("habitCostName").value;
-      const timePerDay = document.getElementById("habitTime").value;
-      const difficulty = document.getElementById("habitDifficulty").value;
+  async function trackCostAuto(habit) {
+    const timePerDay = 10; // fixed or estimated time
+    const difficulty = "moderate"; // could be mapped from habit text
 
-      const res = await fetch("/api/habit-cost", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ habit, timePerDay, difficulty })
-      });
-      const data = await res.json();
+    const res = await fetch("/api/habit-cost", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ habit, timePerDay, difficulty })
+    });
+    const data = await res.json();
 
-      document.getElementById("costSummary").textContent = data.summary;
-      document.getElementById("formTime").textContent = data.timeToForm;
-      document.getElementById("willpower").textContent = data.willpowerLoad;
-      document.getElementById("dropout").textContent = data.dropoutRisk;
-      document.getElementById("habitCostOutput").style.display = "block";
-    }
+    document.getElementById("costSummaryProgress").textContent = data.summary;
+    document.getElementById("formTimeProgress").textContent = data.timeToForm;
+    document.getElementById("willpowerProgress").textContent = data.willpowerLoad;
+    document.getElementById("dropoutProgress").textContent = data.dropoutRisk;
+    document.getElementById("habitCostOutput").style.display = "block";
+  }
 
-    async function trackProgress() {
-      const goalName = document.getElementById("progressGoal").value;
-      const days = document.getElementById("progressDays").value;
+  async function trackProgressAuto(goal) {
+    const days = 30; // simulate 30 days progress
 
-      const res = await fetch("/api/goal-progress", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goalName, days })
-      });
-      const { graphData } = await res.json();
+    const res = await fetch("/api/goal-progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ goalName: goal, days })
+    });
+    const { graphData } = await res.json();
 
-      const ctx = document.getElementById("progressChart").getContext("2d");
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: graphData.map(p => `Day ${p.day}`),
-          datasets: [{
-            label: 'Progress %',
-            data: graphData.map(p => p.progress),
-            fill: false,
-            borderColor: '#023047',
-            tension: 0.3
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: { min: 0, max: 100 }
-          }
+    const ctx = document.getElementById("progressChart").getContext("2d");
+    if (window.myChart) window.myChart.destroy(); // prevent stacking charts
+    window.myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: graphData.map(p => `Day ${p.day}`),
+        datasets: [{
+          label: 'Progress %',
+          data: graphData.map(p => p.progress),
+          borderColor: '#023047',
+          fill: false,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true, max: 100 }
         }
-      });
-    }
-    async function downloadPlan() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-  
-      const goal = document.getElementById("goalText").textContent;
-      const habits = Array.from(document.querySelectorAll("#habitList li")).map(li => li.textContent);
-      const triggers = Array.from(document.querySelectorAll("#triggerList li")).map(li => li.textContent);
-      const rewards = Array.from(document.querySelectorAll("#rewardList li")).map(li => li.textContent);
-
-      let y = 10;
-      doc.setFontSize(14);
-      doc.text("🎯 Goal: " + goal, 10, y);
-      y += 10;
-
-      doc.setFontSize(12);
-      doc.text("📅 Daily Habits:", 10, y);
-      y += 8;
-      habits.forEach(h => {
-        doc.text("- " + h, 12, y);
-        y += 6;
-      });
-
-      y += 6;
-      doc.text("📍 Triggers:", 10, y);
-      y += 8;
-      triggers.forEach(t => {
-        doc.text("- " + t, 12, y);
-        y += 6;
-      });
-
-      y += 6;
-      doc.text("🎁 Rewards:", 10, y);
-      y += 8;
-      rewards.forEach(r => {
-        doc.text("- " + r, 12, y);
-        y += 6;
-      });
-
-      doc.save("goalhit-habit-plan.pdf");
-    }
-
-    async function resetTool() {
-      document.getElementById("goalInput").value = '';
-      document.getElementById("habitResults").style.display = "none";
-      document.getElementById("downloadButton").style.display = "none";
-      document.getElementById("visualBreakdown").style.display = "none";
-
-      // Optional: clear other fields if needed
-      document.getElementById("habitCostName").value = '';
-      document.getElementById("progressGoal").value = '';
-      document.getElementById("progressDays").value = '';
-      document.getElementById("habitCostOutput").style.display = "none";
-      const chartCanvas = document.getElementById("progressChart");
-      if (chartCanvas) {
-        chartCanvas.getContext('2d').clearRect(0, 0, chartCanvas.width, chartCanvas.height);
       }
-    }
-  </script>
+    });
+  }
+
+  function resetTool() {
+    document.getElementById("goalInput").value = '';
+    document.getElementById("goalText").textContent = '';
+    document.getElementById("habitList").innerHTML = '';
+    document.getElementById("triggerList").innerHTML = '';
+    document.getElementById("rewardList").innerHTML = '';
+    document.getElementById("habitResults").style.display = "none";
+    document.getElementById("visualBreakdown").style.display = "none";
+    if (window.myChart) window.myChart.destroy();
+  }
+
+
+  function showHabitCostTracker(breakdownData, totalCost) {
+    // Show the section
+    document.getElementById('habitCostSection').style.display = 'block';
+
+    // Populate the breakdown table
+    const tableBody = document.querySelector('#costBreakdownTable tbody');
+    tableBody.innerHTML = ''; // clear existing rows
+    breakdownData.forEach((entry, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>Day ${entry.day}</td>
+        <td>${entry.cost}</td>
+        <td>${entry.notes || '-'}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    // Set total cost
+    document.getElementById('totalCost').innerText = totalCost;
+  }
+
+
+  async function downloadPlan() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const filename = `GoalPlan-${document.getElementById("goalInput").value.trim().replace(/\s+/g, '_')}.pdf`;
+    doc.save(filename);
+
+    const goal = document.getElementById("goalText").textContent;
+    const habits = [...document.querySelectorAll("#habitList li")].map(li => li.textContent);
+    const triggers = [...document.querySelectorAll("#triggerList li")].map(li => li.textContent);
+    const rewards = [...document.querySelectorAll("#rewardList li")].map(li => li.textContent);
+    const summary = document.getElementById("costSummary").textContent;
+    const timeToForm = document.getElementById("formTime").textContent;
+    const willpower = document.getElementById("willpower").textContent;
+    const dropout = document.getElementById("dropout").textContent;
+
+    let y = 10;
+    doc.setFontSize(14);
+    doc.text("🎯 Goal: " + goal, 10, y); y += 10;
+
+    doc.setFontSize(12);
+    doc.text("📅 Habit Plan:", 10, y); y += 8;
+    habits.forEach(h => { doc.text("- " + h, 12, y); y += 6; });
+
+    y += 4;
+    doc.text("📍 Triggers:", 10, y); y += 8;
+    triggers.forEach(t => { doc.text("- " + t, 12, y); y += 6; });
+
+    y += 4;
+    doc.text("🎁 Rewards:", 10, y); y += 8;
+    rewards.forEach(r => { doc.text("- " + r, 12, y); y += 6; });
+
+    y += 6;
+    doc.text("💡 Cost Summary:", 10, y); y += 6;
+    doc.text("• " + summary, 12, y); y += 6;
+    doc.text("• Time to Form: " + timeToForm, 12, y); y += 6;
+    doc.text("• Willpower Load: " + willpower, 12, y); y += 6;
+    doc.text("• Dropout Risk: " + dropout, 12, y); y += 6;
+
+    doc.save("habit-plan.pdf");
+  }
+</script>
+
 
   <!-- FAQ transition animations -->
   <script>
@@ -510,5 +562,6 @@
       });
     });
   </script>
+
 </body>
 </html>
