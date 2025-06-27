@@ -1,4 +1,4 @@
-const BASE_URL = 'https://goalhit-backend.onrender.com';
+const BASE_URL = 'https://goalhit-backend.onrender.com/api';
 
 // 1. Generate Habit Plan
 export async function generateHabit(goal) {
